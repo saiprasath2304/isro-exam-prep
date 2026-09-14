@@ -1,0 +1,555 @@
+<title>ICRB Launch Prep</title>
+<meta name="description" content="6-day countdown study console for the ISRO ICRB Assistant/UDC exam, with the full 200-question 2022 paper solved and explained.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#FAF7F0; --surface:#FFFFFF; --surface-2:#F1ECE0; --surface-3:#E9E1CE;
+  --ink:#1A2233; --ink-dim:#5B6472; --ink-faint:#8B8A7E;
+  --accent:#E07A1F; --accent-soft:#FBE3C7; --accent-ink:#7A3D0A;
+  --indigo:#1E3A5F; --indigo-soft:#DCE6EF;
+  --rule:#E4DCC8; --rule-strong:#D5C9A8;
+  --good:#2F7D4F; --good-soft:#E1F0E5;
+  --bad:#B23A3A; --bad-soft:#FBE6E3;
+  --warn:#B4790F; --warn-soft:#FBEBCF;
+  --shadow: 0 1px 2px rgba(26,34,51,.06), 0 8px 24px -12px rgba(26,34,51,.18);
+  --radius: 10px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1320; --surface:#161D2C; --surface-2:#1D2536; --surface-3:#252F45;
+    --ink:#ECE8DD; --ink-dim:#A7AFC0; --ink-faint:#6E778C;
+    --accent:#F0993D; --accent-soft:#3A2A17; --accent-ink:#FBCB8E;
+    --indigo:#8CB2E0; --indigo-soft:#1D2E45;
+    --rule:#2A3348; --rule-strong:#37415A;
+    --good:#57B784; --good-soft:#122A20;
+    --bad:#E27B7B; --bad-soft:#2E1818;
+    --warn:#E3B255; --warn-soft:#2E230F;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 28px -14px rgba(0,0,0,.6);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1320; --surface:#161D2C; --surface-2:#1D2536; --surface-3:#252F45;
+  --ink:#ECE8DD; --ink-dim:#A7AFC0; --ink-faint:#6E778C;
+  --accent:#F0993D; --accent-soft:#3A2A17; --accent-ink:#FBCB8E;
+  --indigo:#8CB2E0; --indigo-soft:#1D2E45;
+  --rule:#2A3348; --rule-strong:#37415A;
+  --good:#57B784; --good-soft:#122A20;
+  --bad:#E27B7B; --bad-soft:#2E1818;
+  --warn:#E3B255; --warn-soft:#2E230F;
+  --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 28px -14px rgba(0,0,0,.6);
+  color-scheme: dark;
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  padding:0 16px; padding-block:20px 60px;
+}
+.wrap{max-width:1040px; margin:0 auto; display:flex; flex-direction:column; gap:22px;}
+h1,h2,h3{font-family:'Fraunces', Georgia, serif; text-wrap:balance; margin:0;}
+.mono{font-family:'IBM Plex Mono', ui-monospace, monospace; font-variant-numeric:tabular-nums;}
+a{color:var(--indigo);}
+
+/* ---------- Ticket header ---------- */
+.ticket{
+  background:var(--surface); border:1px solid var(--rule); border-radius:var(--radius);
+  box-shadow:var(--shadow); overflow:hidden; position:relative;
+}
+.ticket-top{
+  display:flex; flex-wrap:wrap; gap:0; align-items:stretch;
+}
+.ticket-main{ flex:1 1 380px; padding:22px 26px; display:flex; flex-direction:column; gap:14px; min-width:0; }
+.ticket-stub{
+  flex:0 0 260px; background:var(--indigo); color:#fff; padding:22px 24px;
+  display:flex; flex-direction:column; gap:10px; justify-content:center;
+  position:relative;
+}
+.ticket-stub::before{
+  content:""; position:absolute; left:-9px; top:50%; transform:translateY(-50%);
+  width:18px; height:18px; border-radius:50%; background:var(--bg);
+  box-shadow: 0 0 0 1px var(--rule);
+}
+.perf{
+  flex-basis:100%; height:0; border-top:2px dashed var(--rule-strong); margin:0;
+  display:none;
+}
+.eyebrow{
+  font-family:'IBM Plex Mono', monospace; font-size:.7rem; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--ink-faint);
+}
+.stub .eyebrow{color:#D8E1F0;}
+h1.mission{font-size:clamp(1.5rem,3vw,2rem); font-weight:600; line-height:1.15;}
+.subrow{display:flex; flex-wrap:wrap; gap:16px 28px; font-size:.92rem; color:var(--ink-dim);}
+.subrow b{color:var(--ink); font-weight:600;}
+.stub .subrow{color:#E7ECF5;}
+.stub .subrow b{color:#fff;}
+.countdown{display:flex; gap:10px; margin-top:2px;}
+.cd-unit{
+  background:rgba(255,255,255,.12); border-radius:8px; padding:8px 4px; text-align:center; min-width:52px;
+  flex:1;
+}
+.cd-num{font-family:'IBM Plex Mono',monospace; font-size:1.5rem; font-weight:600; line-height:1;}
+.cd-label{font-size:.62rem; letter-spacing:.08em; text-transform:uppercase; opacity:.8; margin-top:3px;}
+.venue{font-size:.85rem; color:var(--ink-dim); line-height:1.5;}
+.pattern-strip{
+  display:flex; flex-wrap:wrap; gap:0; border-top:1px solid var(--rule); background:var(--surface-2);
+}
+.pattern-item{
+  flex:1 1 140px; padding:14px 20px; border-right:1px solid var(--rule);
+  display:flex; flex-direction:column; gap:3px;
+}
+.pattern-item:last-child{border-right:none;}
+.pattern-val{font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:1.15rem;}
+.pattern-lbl{font-size:.72rem; color:var(--ink-dim); text-transform:uppercase; letter-spacing:.06em;}
+
+/* ---------- Strategy briefing ---------- */
+.section-head{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;}
+.section-head h2{font-size:1.3rem; font-weight:600;}
+.section-head .note{font-size:.85rem; color:var(--ink-dim);}
+.brief-grid{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px;
+}
+.brief-card{
+  background:var(--surface); border:1px solid var(--rule); border-radius:var(--radius);
+  padding:16px 18px; display:flex; flex-direction:column; gap:8px; box-shadow:var(--shadow);
+}
+.brief-card h3{font-size:1rem; font-weight:600; color:var(--indigo);}
+.brief-card p, .brief-card ul{font-size:.87rem; color:var(--ink-dim); line-height:1.5; margin:0;}
+.brief-card ul{padding-left:1.1em; display:flex; flex-direction:column; gap:4px;}
+.brief-card b{color:var(--ink);}
+.pill{
+  display:inline-flex; align-items:center; gap:5px; font-size:.72rem; font-weight:600;
+  padding:2px 9px; border-radius:999px; background:var(--accent-soft); color:var(--accent-ink);
+  width:fit-content; font-family:'IBM Plex Mono',monospace;
+}
+
+/* ---------- Logic primer table ---------- */
+.primer-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; }
+.primer-card{
+  background:var(--surface); border:1px solid var(--rule); border-left:4px solid var(--accent);
+  border-radius:var(--radius); padding:15px 18px; box-shadow:var(--shadow);
+}
+.primer-card h3{font-size:.98rem; margin-bottom:8px;}
+.primer-card ul{margin:0; padding-left:1.1em; font-size:.85rem; color:var(--ink-dim); line-height:1.55; display:flex; flex-direction:column; gap:5px;}
+.primer-card li b{color:var(--ink);}
+
+/* ---------- Question bank ---------- */
+.bank{background:var(--surface); border:1px solid var(--rule); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden;}
+.bank-head{padding:16px 18px 0; display:flex; flex-direction:column; gap:12px;}
+.tabs{display:flex; gap:6px; flex-wrap:wrap;}
+.tab{
+  font-family:'IBM Plex Mono',monospace; font-size:.8rem; font-weight:500;
+  padding:8px 14px; border-radius:8px 8px 0 0; border:1px solid var(--rule); border-bottom:none;
+  background:var(--surface-2); color:var(--ink-dim); cursor:pointer; display:flex; gap:7px; align-items:center;
+}
+.tab[aria-selected="true"]{background:var(--surface); color:var(--ink); font-weight:600; box-shadow:0 -2px 0 var(--accent) inset;}
+.tab .cnt{font-size:.68rem; color:var(--ink-faint);}
+.tab[aria-selected="true"] .cnt{color:var(--accent-ink);}
+.toolbar{
+  display:flex; gap:10px; flex-wrap:wrap; align-items:center; padding-bottom:14px; border-bottom:1px solid var(--rule);
+}
+.search{
+  flex:1 1 220px; display:flex; align-items:center; gap:8px; background:var(--surface-2);
+  border:1px solid var(--rule); border-radius:8px; padding:8px 12px;
+}
+.search input{
+  border:none; background:transparent; outline:none; font:inherit; color:var(--ink); width:100%; font-size:.9rem;
+}
+.search svg{flex:0 0 auto; opacity:.55;}
+.progress-wrap{display:flex; align-items:center; gap:8px; font-size:.78rem; color:var(--ink-dim); font-family:'IBM Plex Mono',monospace;}
+.progress-bar{width:90px; height:6px; border-radius:99px; background:var(--surface-3); overflow:hidden;}
+.progress-fill{height:100%; background:var(--good); border-radius:99px; transition:width .25s;}
+.filter-btn{
+  font-size:.78rem; padding:7px 12px; border-radius:8px; border:1px solid var(--rule); background:var(--surface-2);
+  color:var(--ink-dim); cursor:pointer; font-family:'IBM Plex Sans',sans-serif;
+}
+.filter-btn[aria-pressed="true"]{background:var(--accent-soft); border-color:var(--accent); color:var(--accent-ink); font-weight:600;}
+
+.qlist{display:flex; flex-direction:column;}
+.qcard{border-bottom:1px solid var(--rule); padding:16px 18px;}
+.qcard:last-child{border-bottom:none;}
+.qtop{display:flex; gap:12px; align-items:flex-start;}
+.qnum{
+  font-family:'IBM Plex Mono',monospace; font-size:.78rem; font-weight:600; color:var(--ink-faint);
+  min-width:34px; padding-top:2px;
+}
+.qbody{flex:1; min-width:0;}
+.qtext{font-size:.97rem; line-height:1.5; margin-bottom:10px; white-space:pre-line;}
+.opts{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:7px; margin-bottom:10px;}
+.opt{
+  border:1px solid var(--rule); border-radius:7px; padding:7px 10px; font-size:.85rem; color:var(--ink-dim);
+  display:flex; gap:7px; background:var(--surface-2);
+}
+.opt b{font-family:'IBM Plex Mono',monospace; color:var(--ink-faint); flex:0 0 auto;}
+.opt.correct{background:var(--good-soft); border-color:var(--good); color:var(--ink); font-weight:500;}
+.opt.correct b{color:var(--good);}
+.qactions{display:flex; gap:8px; align-items:center; flex-wrap:wrap;}
+.reveal-btn{
+  font-size:.8rem; font-weight:600; padding:6px 13px; border-radius:7px; border:1px solid var(--accent);
+  background:var(--accent-soft); color:var(--accent-ink); cursor:pointer; font-family:'IBM Plex Sans',sans-serif;
+}
+.reveal-btn[aria-expanded="true"]{background:transparent; color:var(--ink-dim); border-color:var(--rule);}
+.done-toggle{display:flex; align-items:center; gap:6px; font-size:.78rem; color:var(--ink-dim); cursor:pointer; user-select:none; margin-left:auto;}
+.done-toggle input{accent-color:var(--good); width:15px; height:15px;}
+.tip{
+  margin-top:10px; background:var(--indigo-soft); border-left:3px solid var(--indigo); border-radius:0 7px 7px 0;
+  padding:9px 13px; font-size:.85rem; color:var(--ink); line-height:1.5; display:none;
+}
+.tip.show{display:block;}
+.tip .lbl{font-family:'IBM Plex Mono',monospace; font-size:.68rem; letter-spacing:.06em; text-transform:uppercase; color:var(--indigo); display:block; margin-bottom:3px;}
+.qcard.is-done{opacity:.6;}
+.qcard.is-done .qtext{color:var(--ink-dim);}
+
+footer{text-align:center; font-size:.78rem; color:var(--ink-faint); padding-top:6px;}
+
+@media (max-width:640px){
+  .ticket-top{flex-direction:column;}
+  .ticket-stub{flex:1 1 auto;}
+  .pattern-item{flex:1 1 45%;}
+}
+</style>
+
+<div class="wrap">
+
+  <!-- ========== TICKET HEADER ========== -->
+  <div class="ticket">
+    <div class="ticket-top">
+      <div class="ticket-main">
+        <span class="eyebrow">ICRB : 01(A-JPA) : 2026 &nbsp;·&nbsp; Assistant / UDC</span>
+        <h1 class="mission">Launch Countdown — ISRO ICRB Written Test</h1>
+        <div class="subrow">
+          <span>Candidate: <b>Saiprasath B</b></span>
+          <span>Roll No: <b class="mono">18028613500003</b></span>
+          <span>Post Code: <b class="mono">1, 3, 5</b></span>
+        </div>
+        <div class="venue">📍 VSA Group of Institutions — NH 47, Main Road, Uthamasolapuram Post, Salem, Tamil Nadu – 636010<br>
+        Reporting <b>07:00 AM</b> · Gate closes <b>08:00 AM</b> · Test <b>08:30 – 11:00 AM</b></div>
+      </div>
+      <div class="ticket-stub" aria-live="polite">
+        <span class="eyebrow">T-minus, to gate closing</span>
+        <div class="countdown" id="countdown">
+          <div class="cd-unit"><div class="cd-num" id="cd-d">–</div><div class="cd-label">days</div></div>
+          <div class="cd-unit"><div class="cd-num" id="cd-h">–</div><div class="cd-label">hrs</div></div>
+          <div class="cd-unit"><div class="cd-num" id="cd-m">–</div><div class="cd-label">min</div></div>
+          <div class="cd-unit"><div class="cd-num" id="cd-s">–</div><div class="cd-label">sec</div></div>
+        </div>
+        <div class="subrow" style="font-size:.78rem;">Exam day: <b>Mon, 21 Sep 2026</b></div>
+      </div>
+    </div>
+    <div class="pattern-strip">
+      <div class="pattern-item"><span class="pattern-val">200</span><span class="pattern-lbl">Total questions</span></div>
+      <div class="pattern-item"><span class="pattern-val">150 min</span><span class="pattern-lbl">Combined, Parts A–D</span></div>
+      <div class="pattern-item"><span class="pattern-val">+1 / −0.25</span><span class="pattern-lbl">Correct / wrong</span></div>
+      <div class="pattern-item"><span class="pattern-val">4 × 50</span><span class="pattern-lbl">English·Quant·Reasoning·GK</span></div>
+      <div class="pattern-item"><span class="pattern-val">0.75 min</span><span class="pattern-lbl">Avg. time per question</span></div>
+    </div>
+  </div>
+
+  <!-- ========== STRATEGY BRIEFING ========== -->
+  <section>
+    <div class="section-head"><h2>Mission strategy — the 6 days you have</h2><span class="note">Read once, then drill</span></div>
+    <div class="brief-grid" style="margin-top:14px;">
+      <div class="brief-card">
+        <span class="pill">TIME BUDGET</span>
+        <h3>Attempt order &amp; pacing</h3>
+        <p>150 min ÷ 200 Q ≈ <b>45 sec/question</b> average — but sections aren't equal. Suggested order and split:</p>
+        <ul>
+          <li><b>Reasoning (Part C)</b> first — 35 min. Fastest marks once patterns click.</li>
+          <li><b>Quant (Part B)</b> next — 45 min. Calculation-heavy, needs focus while fresh.</li>
+          <li><b>English (Part A)</b> — 30 min. Vocabulary is instant recall, don't overthink.</li>
+          <li><b>GK (Part D)</b> last — 25 min. You either know it or you don't; move on fast.</li>
+          <li>Keep <b>15 min buffer</b> for review / marked-for-review questions.</li>
+        </ul>
+      </div>
+      <div class="brief-card">
+        <span class="pill">NEGATIVE MARKING</span>
+        <h3>The 40% rule</h3>
+        <p>Each wrong answer costs <b>−0.25</b>; a skip costs <b>0</b>. Expected value of a guess:</p>
+        <ul>
+          <li>Eliminate to <b>2 options</b> → 50% guess odds → EV = +0.375. <b>Always attempt.</b></li>
+          <li>Eliminate to <b>3 options</b> → 33% odds → EV = +0.083. <b>Still attempt.</b></li>
+          <li><b>Zero elimination</b>, pure blind guess (25%) → EV = 0. <b>Skip it</b> — no gain, and it burns time.</li>
+        </ul>
+        <p>Rule of thumb: if you can rule out even <b>one</b> option, guessing beats skipping.</p>
+      </div>
+      <div class="brief-card">
+        <span class="pill">DAY PLAN</span>
+        <h3>How to burn through 200 Qs in 6 days</h3>
+        <ul>
+          <li><b>Day 1–2:</b> Solve Part B (Quant) + Part C (Reasoning) below — every wrong one, redo by hand.</li>
+          <li><b>Day 3:</b> Part A (English) — build a spelling/vocab error-list from what you missed.</li>
+          <li><b>Day 4:</b> Part D (GK) — skim the tip on every item once; GK rewards repetition, not derivation.</li>
+          <li><b>Day 5:</b> Full timed re-run of all 200 under 150 min (use the timer above as a dry run).</li>
+          <li><b>Day 6:</b> Rest + light revision only of your ✓-marked weak items. No new material.</li>
+        </ul>
+      </div>
+      <div class="brief-card">
+        <span class="pill">HEADS UP</span>
+        <h3>A few answers need your own re-check</h3>
+        <p>This paper was reconstructed from a scanned booklet. Everything is solved, but a handful of items are genuinely ambiguous without the exact printed figure/layout — they're marked with a caveat right in their explanation (search “verify” or “re-derive”). Treat those as bonus practice, not settled fact.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== LOGIC PRIMERS ========== -->
+  <section>
+    <div class="section-head"><h2>Understand the logic first</h2><span class="note">One card per section — the recurring patterns</span></div>
+    <div class="primer-grid" style="margin-top:14px;">
+      <div class="primer-card">
+        <h3>🅰️ General English</h3>
+        <ul>
+          <li><b>Spelling:</b> say it syllable-by-syllable in your head — most traps are one doubled/missing letter (commendable, not commendible).</li>
+          <li><b>Synonym/Antonym:</b> learn the word in a sentence, not isolation — you'll recall tone (formal/negative) faster than definitions.</li>
+          <li><b>Idioms:</b> picture the literal scene ('wet behind the ears' = a newborn) — it almost always gives the figurative meaning away.</li>
+          <li><b>Sentence correction:</b> check subject-verb agreement first, then preposition, then tense — in that order.</li>
+          <li><b>Para-jumbles:</b> find the sentence that introduces the topic (no pronoun referring backward) — that's always first.</li>
+        </ul>
+      </div>
+      <div class="primer-card">
+        <h3>🅱️ Quantitative Aptitude</h3>
+        <ul>
+          <li><b>% change chains</b> (successive discounts/profit): use <span class="mono">x+y−xy/100</span>, never add % directly.</li>
+          <li><b>Pipes/boats:</b> convert everything to "rate per unit time" and add/subtract rates — never add times.</li>
+          <li><b>Ratio-based partnership:</b> profit share ∝ (capital × time invested), always.</li>
+          <li><b>Number series/pattern (a□b=c):</b> test simple ops first — sum, product, sum of squares, (a+b)(a−b) — in that order.</li>
+          <li><b>Geometry:</b> know 3-4-5 / 8-15-17 / 6-8-10 right-triangle triples cold — they appear disguised constantly.</li>
+        </ul>
+      </div>
+      <div class="primer-card">
+        <h3>🅲 Reasoning</h3>
+        <ul>
+          <li><b>Coding-decoding:</b> always test position-shift, then letter-value sum, then position-swap — in that order.</li>
+          <li><b>Blood relations/seating:</b> draw it. Every time. Circle for circular seating, line with arrows for direction puzzles.</li>
+          <li><b>Mirror vs water image:</b> mirror flips left-right (reverses order); water image flips top-bottom (time formula: 5:60 − given time).</li>
+          <li><b>Venn diagrams:</b> ask "can one thing belong to both categories in real life?" — if yes, circles must overlap.</li>
+          <li><b>Direction puzzles:</b> plot on an x-y grid with compass fixed (North=+y) — never trust mental rotation alone.</li>
+        </ul>
+      </div>
+      <div class="primer-card">
+        <h3>🅳 General Knowledge</h3>
+        <ul>
+          <li><b>Static GK</b> (Constitution, geography, science) rewards structured lists — learn the ranking/sequence, not the isolated fact.</li>
+          <li><b>Current affairs</b> (2022–23 window): ISRO missions, Quad/G20, award winners, appointments — skim news-year roundups.</li>
+          <li><b>Space-focused questions</b> are a given for ICRB — know every recent ISRO mission name, rover, and vehicle cold.</li>
+          <li>When unsure, eliminate the option that's a real thing but wrong <i>category</i> (e.g. a company instead of a person) — cuts odds fast.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== QUESTION BANK ========== -->
+  <section class="bank">
+    <div class="bank-head">
+      <div class="section-head" style="padding-top:4px;"><h2 style="font-size:1.3rem;">Full paper — 200 solved questions</h2></div>
+      <div class="tabs" role="tablist" id="tabs"></div>
+    </div>
+    <div class="toolbar" style="padding:14px 18px 14px;">
+      <label class="search">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="search" placeholder="Search this section by keyword or question number…">
+      </label>
+      <button class="filter-btn" id="unsolvedBtn" aria-pressed="false">Hide done ✓</button>
+      <div class="progress-wrap">
+        <span id="progressText">0 / 50 reviewed</span>
+        <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+      </div>
+    </div>
+    <div class="qlist" id="qlist"></div>
+  </section>
+
+  <footer>Reconstructed from ICRB-Assistant/UDC-2022 Set A written test booklet (published as the official previous-year paper) · Built for your 21 Sep 2026 attempt · Good luck, Saiprasath 🚀</footer>
+</div>
+
+<script src="data.js"></script>
+<script>
+(function(){
+  var PARTS = [
+    {key:'A', label:'Part A · English', sub:'Q1–50'},
+    {key:'B', label:'Part B · Quant', sub:'Q51–100'},
+    {key:'C', label:'Part C · Reasoning', sub:'Q101–150'},
+    {key:'D', label:'Part D · GK', sub:'Q151–200'}
+  ];
+  var LETTERS = ['A','B','C','D'];
+  var state = { part: 'A', query: '', hideDone: false };
+
+  function loadDone(){
+    try { return JSON.parse(localStorage.getItem('icrb_done')||'{}'); } catch(e){ return {}; }
+  }
+  function saveDone(map){
+    try { localStorage.setItem('icrb_done', JSON.stringify(map)); } catch(e){}
+  }
+  var doneMap = loadDone();
+
+  // ---- Tabs ----
+  var tabsEl = document.getElementById('tabs');
+  PARTS.forEach(function(p){
+    var btn = document.createElement('button');
+    btn.className = 'tab'; btn.setAttribute('role','tab'); btn.dataset.part = p.key;
+    btn.setAttribute('aria-selected', p.key === state.part ? 'true':'false');
+    btn.innerHTML = p.label + ' <span class="cnt">'+p.sub+'</span>';
+    btn.addEventListener('click', function(){
+      state.part = p.key;
+      document.querySelectorAll('.tab').forEach(function(t){ t.setAttribute('aria-selected', t.dataset.part===p.key ? 'true':'false'); });
+      render();
+    });
+    tabsEl.appendChild(btn);
+  });
+
+  document.getElementById('search').addEventListener('input', function(e){
+    state.query = e.target.value.trim().toLowerCase();
+    render();
+  });
+  var hideBtn = document.getElementById('unsolvedBtn');
+  hideBtn.addEventListener('click', function(){
+    state.hideDone = !state.hideDone;
+    hideBtn.setAttribute('aria-pressed', state.hideDone ? 'true':'false');
+    hideBtn.textContent = state.hideDone ? 'Show all' : 'Hide done ✓';
+    render();
+  });
+
+  var qlist = document.getElementById('qlist');
+
+  function render(){
+    var items = DATA[state.part] || [];
+    if(state.query){
+      items = items.filter(function(it){
+        return String(it.n) === state.query ||
+          it.q.toLowerCase().indexOf(state.query) !== -1 ||
+          it.o.some(function(o){ return o.toLowerCase().indexOf(state.query) !== -1; });
+      });
+    }
+    var doneCount = (DATA[state.part]||[]).filter(function(it){ return doneMap[state.part+it.n]; }).length;
+    var total = (DATA[state.part]||[]).length;
+    document.getElementById('progressText').textContent = doneCount + ' / ' + total + ' reviewed';
+    document.getElementById('progressFill').style.width = (total? (doneCount/total*100):0) + '%';
+
+    if(state.hideDone){
+      items = items.filter(function(it){ return !doneMap[state.part+it.n]; });
+    }
+
+    qlist.innerHTML = '';
+    if(!items.length){
+      var empty = document.createElement('div');
+      empty.style.cssText = 'padding:40px 18px;text-align:center;color:var(--ink-faint);font-size:.9rem;';
+      empty.textContent = 'No questions match — clear the search or filter.';
+      qlist.appendChild(empty);
+      return;
+    }
+    items.forEach(function(it){
+      qlist.appendChild(buildCard(it));
+    });
+  }
+
+  function buildCard(it){
+    var key = state.part + it.n;
+    var card = document.createElement('div');
+    card.className = 'qcard' + (doneMap[key] ? ' is-done':'');
+
+    var top = document.createElement('div');
+    top.className = 'qtop';
+
+    var num = document.createElement('div');
+    num.className = 'qnum'; num.textContent = 'Q' + it.n;
+    top.appendChild(num);
+
+    var body = document.createElement('div');
+    body.className = 'qbody';
+
+    var qt = document.createElement('div');
+    qt.className = 'qtext'; qt.textContent = it.q;
+    body.appendChild(qt);
+
+    var opts = document.createElement('div');
+    opts.className = 'opts';
+    it.o.forEach(function(optText, idx){
+      var o = document.createElement('div');
+      o.className = 'opt';
+      o.dataset.idx = idx;
+      o.innerHTML = '<b>'+LETTERS[idx]+'.</b><span></span>';
+      o.querySelector('span').textContent = optText;
+      opts.appendChild(o);
+    });
+    body.appendChild(opts);
+
+    var actions = document.createElement('div');
+    actions.className = 'qactions';
+    var revealBtn = document.createElement('button');
+    revealBtn.className = 'reveal-btn'; revealBtn.setAttribute('aria-expanded','false');
+    revealBtn.textContent = 'Show answer';
+
+    var tip = document.createElement('div');
+    tip.className = 'tip';
+    tip.innerHTML = '<span class="lbl">Quick-solve</span>' + it.t;
+
+    revealBtn.addEventListener('click', function(){
+      var expanded = revealBtn.getAttribute('aria-expanded') === 'true';
+      revealBtn.setAttribute('aria-expanded', (!expanded).toString());
+      revealBtn.textContent = expanded ? 'Show answer' : 'Hide answer';
+      tip.classList.toggle('show', !expanded);
+      opts.querySelectorAll('.opt').forEach(function(o){
+        o.classList.toggle('correct', !expanded && Number(o.dataset.idx) === it.a);
+      });
+      if(!expanded && !doneMap[key]){
+        doneMap[key] = true; saveDone(doneMap);
+        card.classList.add('is-done');
+        var cb = card.querySelector('.done-toggle input');
+        if(cb) cb.checked = true;
+        updateProgressOnly();
+      }
+    });
+
+    var doneLabel = document.createElement('label');
+    doneLabel.className = 'done-toggle';
+    var cb = document.createElement('input');
+    cb.type = 'checkbox'; cb.checked = !!doneMap[key];
+    cb.addEventListener('change', function(){
+      if(cb.checked){ doneMap[key] = true; card.classList.add('is-done'); }
+      else { delete doneMap[key]; card.classList.remove('is-done'); }
+      saveDone(doneMap);
+      updateProgressOnly();
+    });
+    doneLabel.appendChild(cb);
+    doneLabel.appendChild(document.createTextNode('mark reviewed'));
+
+    actions.appendChild(revealBtn);
+    actions.appendChild(doneLabel);
+    body.appendChild(actions);
+    body.appendChild(tip);
+    top.appendChild(body);
+    card.appendChild(top);
+    return card;
+  }
+
+  function updateProgressOnly(){
+    var total = (DATA[state.part]||[]).length;
+    var doneCount = (DATA[state.part]||[]).filter(function(it){ return doneMap[state.part+it.n]; }).length;
+    document.getElementById('progressText').textContent = doneCount + ' / ' + total + ' reviewed';
+    document.getElementById('progressFill').style.width = (total? (doneCount/total*100):0) + '%';
+  }
+
+  render();
+
+  // ---- Countdown to gate-closing 08:00 AM, 21 Sep 2026 (falls back to exam start if past) ----
+  var GATE = new Date('2026-09-21T08:00:00+05:30').getTime();
+  var START = new Date('2026-09-21T08:30:00+05:30').getTime();
+  function tick(){
+    var now = Date.now();
+    var target = now < GATE ? GATE : START;
+    var diff = Math.max(0, target - now);
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor(diff % 86400000 / 3600000);
+    var m = Math.floor(diff % 3600000 / 60000);
+    var s = Math.floor(diff % 60000 / 1000);
+    document.getElementById('cd-d').textContent = d;
+    document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>
